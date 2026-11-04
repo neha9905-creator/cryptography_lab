@@ -1,0 +1,35 @@
+#include <stdio.h>
+
+int main() {
+    char plaintext[1001], ciphertext[1001];
+    int key, i;
+
+    printf("Enter the plaintext: ");
+    scanf("%s", plaintext);
+
+    printf("Enter the key (integer): ");
+    scanf("%d", &key);
+
+    key = key % 26;
+
+    for (i = 0; plaintext[i] != '\0'; i++) {
+        char ch = plaintext[i];
+
+        if (ch >= 'A' && ch <= 'Z') {
+            ciphertext[i] = ((ch - 'A' + key) % 26) + 'A';
+        }
+        else if (ch >= 'a' && ch <= 'z') {
+            ciphertext[i] = ((ch - 'a' + key) % 26) + 'a';
+        }
+        else {
+            ciphertext[i] = ch;
+        }
+    }
+
+    ciphertext[i] = '\0';
+
+    printf("\nPlain Text : %s\n", plaintext);
+    printf("Cipher Text: %s\n", ciphertext);
+
+    return 0;
+}
